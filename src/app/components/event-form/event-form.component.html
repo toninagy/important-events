@@ -1,47 +1,48 @@
 <h2 class="display-2 my-3">New event</h2>
 
-<form action="" novalidate>
+<form action="" (ngSubmit)="onSave($event)" [formGroup]="eventForm">
   <div class="form-group">
     <label for="title">Title</label>
     <input
       type="text"
       class="form-control is-invalid"
-      id="title"
       placeholder="Title"
-      required
+      formControlName="title"
+      [class.is-invalid]="isInvalidAndTouchedOrDirty('title')"
     />
     <div class="invalid-feedback">Please provide a title!</div>
   </div>
   <div class="form-group">
-    <label for="description">Description</label>
+    <label for="note">Note</label>
     <textarea
       class="form-control"
-      id="description"
       rows="5"
-      required
+      formControlName="note"
+      [class.is-invalid]="isInvalidAndTouchedOrDirty('note')"
     ></textarea>
     <div class="invalid-feedback">Please provide a description!</div>
+  </div>
+  <div class="form-group">
+    <label for="date">Date</label>
+    <textarea
+      class="form-control"
+      rows="5"
+      formControlName="date"
+      [class.is-invalid]="isInvalidAndTouchedOrDirty('date')"
+    ></textarea>
+    <div class="invalid-feedback">Please provide a date!</div>
   </div>
   <div class="form-group">
     <label for="place">Place</label>
     <input
       type="text"
       class="form-control"
-      id="place"
       placeholder="Place"
-      required
+      formControlName="location"
+      [class.is-invalid]="isInvalidAndTouchedOrDirty('location')"
     />
-    <div class="invalid-feedback">Please provide a place!</div>
-  </div>
-  <div class="form-group">
-    <label for="status">Status</label>
-    <select class="form-control" id="status" required>
-      <option value="NEW">New</option>
-      <option value="DOING">Doing</option>
-      <option value="DONE">Done</option>
-    </select>
-    <div class="invalid-feedback">Please provide a status!</div>
+    <div class="invalid-feedback">Please provide a location!</div>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!eventForm.valid">Submit</button>
 </form>

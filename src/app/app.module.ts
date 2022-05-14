@@ -9,6 +9,9 @@ import { EventFormComponent } from './components/event-form/event-form.component
 import { IndexComponent } from './components/index/index.component';
 import { AboutComponent } from './components/about/about.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EventNewComponent } from './components/event-new/event-new.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,11 +19,14 @@ import { AboutComponent } from './components/about/about.component';
     EventDetailComponent,
     EventFormComponent,
     IndexComponent,
-    AboutComponent
+    AboutComponent,
+    EventNewComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

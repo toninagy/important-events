@@ -10,7 +10,7 @@ import { EventService } from 'src/app/event.service';
 })
 export class EventDetailComponent implements OnInit {
 
-  public event: Event = new Event();
+  public event: Event;
 
   constructor(private eventService: EventService, private activatedRoute: ActivatedRoute) {
     // this.event = eventService.getAll()[0];
@@ -18,7 +18,7 @@ export class EventDetailComponent implements OnInit {
 
   ngOnInit() {
     let id = Number(this.activatedRoute.snapshot.paramMap.get('id'))
-    this.event = this.eventService.getAll().filter((event: Event) => event.id === id)[0];
+    this.event = this.eventService.get(id) as Event;
   }
 
 }
