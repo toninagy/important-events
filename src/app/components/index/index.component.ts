@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
+  // public num: number = 0 ;
+  public numObj = {
+    counter:0,
+    dates:""
+  }
+
   constructor() { }
 
   ngOnInit(): void {
