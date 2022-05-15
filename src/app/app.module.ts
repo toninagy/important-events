@@ -11,6 +11,7 @@ import { AboutComponent } from './components/about/about.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventNewComponent } from './components/event-new/event-new.component';
+import { EventEditComponent } from './components/event-edit/event-edit.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EventNewComponent } from './components/event-new/event-new.component';
     EventFormComponent,
     IndexComponent,
     AboutComponent,
-    EventNewComponent
+    EventNewComponent,
+    EventEditComponent
   ],
   imports: [
     BrowserModule,

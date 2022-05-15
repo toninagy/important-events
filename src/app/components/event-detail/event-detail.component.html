@@ -15,6 +15,6 @@
 </dl>
 
 <p>
-  <a class="btn btn-primary" href="#" role="button">Edit</a>
-  <a class="btn btn-outline-danger" href="#" role="button">Delete</a>
+  <a class="btn btn-primary" role="button" [routerLink]="['/events', event.id, 'edit']">Edit</a>
+  <a class="btn btn-outline-danger" (click)="onDeleteClick()" role="button">Delete</a>
 </p>

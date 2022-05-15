@@ -45,4 +45,11 @@ export class EventService {
     this.events.push(newEvent);
     return newEvent;
   }
+
+  public delete(id: number): void {
+    let event: Event = this.get(id);
+    if (event) {
+      this.events.splice(this.events.indexOf(event), 1);
+    }
+  }
 }

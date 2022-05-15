@@ -1,4 +1,4 @@
-<h2 class="display-2 my-3">New event</h2>
+<h2 class="display-2 my-3">{{ this.event ? 'Edit' : 'New' }}</h2>
 
 <form action="" (ngSubmit)="onSave($event)" [formGroup]="eventForm">
   <div class="form-group">

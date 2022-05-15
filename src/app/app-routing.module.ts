@@ -4,6 +4,7 @@ import { AboutComponent } from './components/about/about.component';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { EventNewComponent } from './components/event-new/event-new.component';
 import { EventListComponent } from './components/event-list/event-list.component';
+import { EventEditComponent } from './components/event-edit/event-edit.component';
 import { IndexComponent } from './components/index/index.component';
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: "events/:id",
     component: EventDetailComponent,
+  },
+  {
+    path: "events/:id/edit",
+    component: EventEditComponent,
   },
   {
     path: "about",

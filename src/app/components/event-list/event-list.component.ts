@@ -10,7 +10,6 @@ import { Event } from 'src/app/event';
 export class EventListComponent implements OnInit {
 
   public events: Array<Event> = [];
-  public selectedEvent: Event;
 
   constructor(private eventService: EventService) {
     this.events = eventService.getAll();
