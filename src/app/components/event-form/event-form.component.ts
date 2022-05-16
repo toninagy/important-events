@@ -26,7 +26,6 @@ export class EventFormComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log('init');
     this.eventForm = this.formBuilder.group({
       id: this.event?.id,
       title: [this.event?.title, [Validators.required]],
@@ -36,7 +35,7 @@ export class EventFormComponent implements OnInit, OnChanges {
     });
   }
 
-  public onSave(e: any) {
+  public onSave() {
     this.save.emit(this.eventForm.value);
   }
 

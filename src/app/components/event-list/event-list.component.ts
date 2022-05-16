@@ -12,10 +12,12 @@ export class EventListComponent implements OnInit {
   public events: Array<Event> = [];
 
   constructor(private eventService: EventService) {
-    this.events = eventService.getAll();
   }
 
   ngOnInit(): void {
+    this.eventService.getAll().subscribe((data) =>  {
+      this.events = data;
+    });
   }
 
   public onSave(event: Event) {

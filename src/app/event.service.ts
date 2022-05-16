@@ -1,55 +1,38 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Event } from 'src/app/event';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  private events: Array<Event> = [
-    {
-      id: 1,
-      title: "asdasd",
-      location: "sdasds",
-      date: "",
-      note: "sdfs"
-    },
-    {
-      id: 2,
-      title: "dgfdsgsd",
-      location: "dadsafsa",
-      date: "",
-      note: "fdfsdfe"
-    }
-  ];
+  private url = 'http://127.0.0.10/api/events';
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) {}
 
-  public getAll(): Event[] {
-    return this.events;
+  public getAllWithPromise(): Promise<Event[]> {
+    return this.httpClient.get<Event[]>(this.url).toPromise();
   }
 
-  public get(id: number): Event | undefined {
-    let event = this.events.find((event: Event) => event.id === id);
-    return event;
+  public getAll(): Observable<Event[]> {
+    return this.httpClient.get<Event[]>(this.url);
   }
 
-  public update(id: number, modifiedEvent: Event): Event | undefined {
-    let event = this.get(id);
-    Object.assign(event, modifiedEvent);
-    return event;
+  public get(id: number): Observable<Event> {
+    return this.httpClient.get<Event>(`${this.url}/${id}`);
   }
 
-  public add(newEvent: Event): Event | undefined {
-    newEvent.id = new Date().getMilliseconds();
-    this.events.push(newEvent);
-    return newEvent;
+  public update(id: number, modifiedEvent: Event): Observable<Event> {
+    return this.httpClient.put<Event>(`${this.url}/${id}`, modifiedEvent);
   }
 
-  public delete(id: number): void {
-    let event: Event = this.get(id);
-    if (event) {
-      this.events.splice(this.events.indexOf(event), 1);
-    }
+  public add(newEvent: Event): Observable<Event> {
+    return this.httpClient.post<Event>(this.url, newEvent);
+  }
+
+  public delete(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.url}/${id}`);
   }
 }

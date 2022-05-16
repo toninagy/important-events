@@ -12,9 +12,10 @@ export class EventNewComponent {
 
   constructor(private eventService: EventService, private router: Router) { }
 
-  public onSave(event: Event) {
-    this.eventService.add(event);
-    this.router.navigate(['/events']);
+  public onSave(event: Event): void {
+    this.eventService.add(event).subscribe(() => {
+      this.router.navigate(['/events']);
+    });
   }
 
 }
