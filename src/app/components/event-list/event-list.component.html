@@ -2,22 +2,23 @@
 <p><a class="btn btn-primary" routerLink="/events/new" role="button">New event</a></p>
 <div class="list-group">
   <a *ngFor="let event of events"
-    class="list-group-item list-group-item-action list-group-item-danger"
+    class="list-group-item list-group-item-action"
     [routerLink]="['/events', event.id]"
   >
     <div class="d-flex w-100 justify-content-between align-items-center">
       <h5 class="mb-1">{{event.title}}</h5>
-      <span class="badge badge-danger">{{event.id}}</span>
+      <span>{{event.id}}</span>
     </div>
     <p class="mb-1">
-      Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
-      risus varius blandit.
+      {{event.note}}
     </p>
     <small>
-      <i class="fas fa-map-marker-alt"></i> {{event.location}}
-      <i class="fas fa-calendar-alt"></i> {{event.date}}
+      <i class="fas fa-map-marker-alt">Location</i> {{event.location}}
+      <br>
+      <i class="fas fa-calendar-alt">Date</i> {{event.date}}
       <i class="fas fa-comment"></i>
-      <span class="badge badge-light badge-pill">{{event.note}}</span>
+      <br>
+      <a class="btn btn-primary" role="button" [routerLink]="['/events', event.id, 'edit']">Edit event</a>
     </small>
   </a>
 </div>
